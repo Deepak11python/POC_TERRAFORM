@@ -7,6 +7,5 @@ output  "machine_type" {
 }
 
 output  "gcp_compute_zone" {
-
         value = "us-central1-c"
 }
