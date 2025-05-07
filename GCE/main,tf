@@ -1,27 +1,54 @@
+
 # Configure the Google Cloud provider
+
 provider "google" {
-  project     = "helpful-metric-459104-j4"
-  region      = var.region
+
+  project     =  var.p_id
+
+  region      =   var.region
+
 }
+
+
+
 
 
 # Create a GCE Virtual Machine Instance
+
 resource "google_compute_instance" "GCE-DEMO" {
+
   name         = "vmdemo1"
+
   machine_type = var.machine_type
-  zone         = var.zone
+
+  zone         = var.gcp_compute_zone
+
+
 
 # Configure the boot disk with a Debian OS image
+
 boot_disk {
+
     initialize_params {
+
       image = "debian-cloud/debian-11"
+
     }
+
 }
 
 
+
+
+
 # Attach the instance to the default VPC network
+
   network_interface {
+
     network       = "default"
+
     access_config {}  # For public IP
+
   }
+
 }
